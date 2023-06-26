@@ -1,10 +1,10 @@
-package main.java.org.utils;
+package org.utils;
 import java.time.LocalDate;
 
 public abstract class Participant {
-    public void Vote(VoteOptions vo){}
+    public abstract void Vote(VoteOptions vo);
 
-    public void book(){}
+    public abstract void book();
 
-    public void getAvailableItems(LocalDate startDate, LocalDate endDate) {}
+    public abstract void getAvailableItems(LocalDate startDate, LocalDate endDate);
 }

@@ -1,5 +1,5 @@
-package main.java.org.utils;
-enum VoteOptions {
+package org.utils;
+public enum VoteOptions {
     PREPARE,
     READY,
     ABORT,
