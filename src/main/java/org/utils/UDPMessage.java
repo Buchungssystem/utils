@@ -16,9 +16,9 @@ public class UDPMessage {
     private SendingInformation sender;
 
     @JsonProperty("operation")
-    private String operation;
+    private Operations operation;
 
-    public UDPMessage(UUID pTransaktionNumber, byte[] pData, SendingInformation pSender, String pOperation) {
+    public UDPMessage(UUID pTransaktionNumber, byte[] pData, SendingInformation pSender, Operations pOperation) {
         this.transaktionNumber = pTransaktionNumber;
         this.data = pData;
         this.sender = pSender;
@@ -37,7 +37,7 @@ public class UDPMessage {
         return sender;
     }
 
-    public String getOperation() {
+    public Operations getOperation() {
         return operation;
     }
 }
