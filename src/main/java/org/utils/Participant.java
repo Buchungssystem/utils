@@ -5,6 +5,9 @@ import java.util.UUID;
 
 public abstract class Participant {
 
+    public final int travelBrokerPort = 4446;
+
+
     public Participant(){
         localhost = InetAddress.getLoopbackAddress();
     }
@@ -16,4 +19,6 @@ public abstract class Participant {
     public abstract void book();
 
     public abstract byte[] getAvailableItems(LocalDate startDate, LocalDate endDate, UUID pTransaktionnumber);
+
+
 }
