@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public abstract class Participant {
 
-    public final int travelBrokerPort = 4446;
+    public static final int travelBrokerPort = 4446;
 
 
     public Participant(){
@@ -16,9 +16,9 @@ public abstract class Participant {
 
     public abstract Operations Vote();
 
-    public abstract void book();
+    public abstract byte[] book(LocalDate startDate, LocalDate endDate);
 
-    public abstract byte[] getAvailableItems(LocalDate startDate, LocalDate endDate, UUID pTransaktionnumber);
+    public abstract byte[] getAvailableItems(LocalDate startDate, LocalDate endDate);
 
 
 }
