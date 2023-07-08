@@ -16,6 +16,10 @@ public class AvailabilityData {
         this.endDate = endDate;
     }
 
+    public AvailabilityData(){
+
+    }
+
     public LocalDate getStartDate() {
         return startDate;
     }

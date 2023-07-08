@@ -25,6 +25,10 @@ public class UDPMessage {
         this.operation = pOperation;
     }
 
+    public UDPMessage(){
+
+    }
+
     public UUID getTransaktionNumber() {
         return transaktionNumber;
     }
@@ -39,5 +43,21 @@ public class UDPMessage {
 
     public Operations getOperation() {
         return operation;
+    }
+
+    public void setTransaktionNumber(UUID transaktionNumber) {
+        this.transaktionNumber = transaktionNumber;
+    }
+
+    public void setData(byte[] data) {
+        this.data = data;
+    }
+
+    public void setSender(SendingInformation sender) {
+        this.sender = sender;
+    }
+
+    public void setOperation(Operations operation) {
+        this.operation = operation;
     }
 }
