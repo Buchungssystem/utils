@@ -16,9 +16,11 @@ public abstract class Participant {
     public static final InetAddress localhost = InetAddress.getLoopbackAddress();
 
 
-    public abstract Operations Vote();
+    public abstract Operations prepare(BookingData bookingData, UUID transaktionId);
 
-    public abstract byte[] book(LocalDate startDate, LocalDate endDate);
+    public abstract boolean commit(UUID transaktionId);
+
+    public abstract boolean abort(UUID transaktionId);
 
     public abstract ArrayList<Object> getAvailableItems(LocalDate startDate, LocalDate endDate);
 
