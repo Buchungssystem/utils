@@ -18,16 +18,26 @@ public class UDPMessage {
     @JsonProperty("operation")
     private Operations operation;
 
-    public UDPMessage(UUID pTransaktionNumber, byte[] pData, SendingInformation pSender, Operations pOperation) {
+    @JsonProperty("originPort")
+    private int originPort;
+
+    //constructor to request for TravelBroker
+    public UDPMessage(UUID pTransaktionNumber, byte[] pData, SendingInformation pSender, Operations pOperation, int originPort) {
         this.transaktionNumber = pTransaktionNumber;
         this.data = pData;
         this.sender = pSender;
         this.operation = pOperation;
+        this.originPort = originPort;
     }
 
-    public UDPMessage(){
-
+    //constructor to answer for participants
+    public UDPMessage(UUID transaktionNumber, SendingInformation sender, Operations operation) {
+        this.transaktionNumber = transaktionNumber;
+        this.sender = sender;
+        this.operation = operation;
     }
+
+    public UDPMessage(){}
 
     public UUID getTransaktionNumber() {
         return transaktionNumber;
@@ -59,5 +69,13 @@ public class UDPMessage {
 
     public void setOperation(Operations operation) {
         this.operation = operation;
+    }
+
+    public int getOriginPort() {
+        return originPort;
+    }
+
+    public void setOriginPort(int originPort) {
+        this.originPort = originPort;
     }
 }
