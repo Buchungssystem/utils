@@ -48,6 +48,13 @@ public class UDPMessage {
     }
 
     //constructor to answer for participants
+    public UDPMessage(UUID transaktionNumber, SendingInformation sender, Operations operation, boolean recovery) {
+        this.transaktionNumber = transaktionNumber;
+        this.sender = sender;
+        this.operation = operation;
+        this.recovery = recovery;
+    }
+
     public UDPMessage(UUID transaktionNumber, SendingInformation sender, Operations operation) {
         this.transaktionNumber = transaktionNumber;
         this.sender = sender;
@@ -94,5 +101,9 @@ public class UDPMessage {
 
     public void setOriginPort(int originPort) {
         this.originPort = originPort;
+    }
+
+    public boolean isRecovery() {
+        return recovery;
     }
 }

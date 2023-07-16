@@ -42,10 +42,10 @@ public class LogWriter <T extends Serializable>{
 
         if (file.delete()) {
             // Delete the file of the corresponding transactionId
-            LOGGER.log(Level.INFO, "The File with the transactionId: " + transactionId + "was successfully deleted from the Logs!");
+            LOGGER.log(Level.INFO, "The File with the transactionId: " + transactionId + " was successfully deleted from the Logs!");
         } else {
             // Log if deletion failed
-            LOGGER.log(Level.SEVERE, "The File with the transactionId: " + transactionId + "couldn't be removed");
+            LOGGER.log(Level.SEVERE, "The File with the transactionId: " + transactionId + " couldn't be removed");
         }
     }
 
@@ -66,11 +66,12 @@ public class LogWriter <T extends Serializable>{
 
     public TransactionContext readLogFile(UUID transactionId){
         try (FileInputStream fileInputStream = new FileInputStream(directory + "/" + transactionId + ".txt");
-        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
+
             // Read object from file
-            TransactionContext transactionContex = (TransactionContext) objectInputStream.readObject();
+            TransactionContext transactionContext = (TransactionContext) objectInputStream.readObject();
             LOGGER.log(Level.INFO, "Successfully read log file");
-            return transactionContex;
+            return transactionContext;
         } catch (FileNotFoundException e) {
             LOGGER.log(Level.SEVERE, "The file " + transactionId + "was not found", e);
         } catch (IOException e) {

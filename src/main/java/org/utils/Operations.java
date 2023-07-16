@@ -7,5 +7,7 @@ public enum Operations {
     READY,
     AVAILIBILITY,
     OK,
-    ABORTFROMTIMER
+    ABORTFROMTIMER,
+    REQUESTDECISION,
+    COORDINATORDOWN
 }
