@@ -6,7 +6,6 @@ public enum Operations {
     ABORT,
     READY,
     AVAILIBILITY,
-    OK
-
-
+    OK,
+    ABORTFROMTIMER
 }

@@ -35,7 +35,7 @@ public class TransactionContext implements Serializable {
         this.currentState = currentState;
     }
 
-    public boolean isCarReceived() {
+    public boolean isCarFlag() {
         return carFlag;
     }
 
@@ -43,7 +43,7 @@ public class TransactionContext implements Serializable {
         this.carFlag = carReceived;
     }
 
-    public boolean isHotelReceived() {
+    public boolean isHotelFlag() {
         return hotelFlag;
     }
 

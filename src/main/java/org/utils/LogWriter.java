@@ -1,4 +1,7 @@
 package org.utils;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
@@ -46,4 +49,36 @@ public class LogWriter <T extends Serializable>{
         }
     }
 
+    public boolean isLogsNotEmpty(){
+        Path dirPath = Paths.get(directory);
+        boolean isEmptyDirectory = true;
+        try{
+            isEmptyDirectory = Files.list(dirPath).findAny().isPresent();
+        }catch (Exception e){
+            LOGGER.log(Level.SEVERE, "There was an error with checking the directory", e);
+        }
+        return isEmptyDirectory;
+    }
+
+    public String getDirectory() {
+        return directory;
+    }
+
+    public TransactionContext readLogFile(UUID transactionId){
+        try (FileInputStream fileInputStream = new FileInputStream(directory + "/" + transactionId + ".txt");
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
+            // Read object from file
+            TransactionContext transactionContex = (TransactionContext) objectInputStream.readObject();
+            LOGGER.log(Level.INFO, "Successfully read log file");
+            return transactionContex;
+        } catch (FileNotFoundException e) {
+            LOGGER.log(Level.SEVERE, "The file " + transactionId + "was not found", e);
+        } catch (IOException e) {
+            LOGGER.log(Level.SEVERE, "There was an error with initializing the stream", e);
+        } catch (ClassNotFoundException e) {
+            LOGGER.log(Level.SEVERE, "Class was not found", e);
+        }
+
+        return null;
+    }
 }

@@ -21,6 +21,23 @@ public class UDPMessage {
     @JsonProperty("originPort")
     private int originPort;
 
+    @JsonProperty("recovery")
+    private boolean recovery;
+
+    public UDPMessage(Operations operation, UUID transaktionId){
+        this.operation = operation;
+        this.transaktionNumber = transaktionId;
+    }
+
+    public UDPMessage(UUID pTransaktionNumber, byte[] pData, SendingInformation pSender, Operations pOperation, int originPort, boolean recovery) {
+        this.transaktionNumber = pTransaktionNumber;
+        this.data = pData;
+        this.sender = pSender;
+        this.operation = pOperation;
+        this.originPort = originPort;
+        this.recovery = recovery;
+    }
+
     //constructor to request for TravelBroker
     public UDPMessage(UUID pTransaktionNumber, byte[] pData, SendingInformation pSender, Operations pOperation, int originPort) {
         this.transaktionNumber = pTransaktionNumber;
